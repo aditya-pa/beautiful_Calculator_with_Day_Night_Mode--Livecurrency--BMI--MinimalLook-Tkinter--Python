@@ -25,6 +25,19 @@ B=0
 flag=False
 f=True
 def exchange():    
+    frame_E0=Frame(Ealf)
+    frame_E0.grid(row=0,column=0)
+    frame_E1=Frame(Ealf)
+    frame_E1.grid(row=1,column=0)
+    frame_E2=Frame(Ealf)
+    frame_E2.grid(row=2,column=0)
+    frame_E3=Frame(Ealf)
+    frame_E3.grid(row=3,column=0)
+    frame_E4=Frame(Ealf)
+    frame_E4.grid(row=4,column=0)
+    frame_E5=Frame(Ealf)
+    frame_E5.grid(row=5,column=0)
+    
     def click(event):
         global v
         if v=='0':
@@ -104,6 +117,7 @@ def exchange():
     URL="https://www.x-rates.com/table/?from=INR&amount=1"
     headers={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
                           "Chrome/80.0.3987.163 Safari/537.36"}
+    
     whole_list={}
     try:
         page=requests.get(URL,headers = headers)
@@ -119,22 +133,17 @@ def exchange():
             
     except:
         final_data=getting_data()
-    frame_E0=Frame(Ealf)
-    frame_E0.grid(row=0,column=0)
-    frame_E1=Frame(Ealf)
-    frame_E1.grid(row=1,column=0)
-    frame_E2=Frame(Ealf)
-    frame_E2.grid(row=2,column=0)
-    frame_E3=Frame(Ealf)
-    frame_E3.grid(row=3,column=0)
-    frame_E4=Frame(Ealf)
-    frame_E4.grid(row=4,column=0)
-    frame_E5=Frame(Ealf)
-    frame_E5.grid(row=5,column=0)
-    frame_E6=Frame(Ealf)
-    frame_E6.grid(row=6,column=0)
 
-
+    mainmenu1 = Menubutton(Ealf, image=image ,background=DBR,activebackground=HBR)
+    mainmenu1.grid(row=0,column=0,sticky=W+N)
+    submenu1 = Menu(mainmenu1,tearoff = 0,background=DBR,
+    foreground=FR, activebackground=HBR,activeforeground=HFR)
+    mainmenu1.config(menu=submenu1,)
+    submenu1.add_command(label="DAY/NIGHT",command=change)
+    submenu1.add_command(label="About",command=about_me)
+    submenu1.add_command(label="Basic",command=basic)
+    submenu1.add_separator()
+    submenu1.add_command(label="Quit",command=destroy)
     option=["Rupee","US Dollar","Euro","British Pound","Australian Dollar","Canadian Dollar",
     "Singapore Dollar","Swiss Franc","Malaysian Ringgit","Japanese Yen","Chinese Yuan Renminbi"]
     clicked=StringVar()
@@ -143,15 +152,14 @@ def exchange():
     clicked1.set(option[0])
     displaychar=StringVar()
     displaychar1=StringVar()
-    displaychar1.set(v)
-    imgvar1 = PhotoImage(file='menu.png')
-    drop=ttk.Combobox(frame_E1,state="readonly",textvariable=clicked,width=40)
+    displaychar1.set(v)    
+    drop=ttk.Combobox(frame_E1,state="readonly",textvariable=clicked,width=37)
     drop['values']=option
     drop.grid()
     drop.bind("<FocusIn>", defocus)
     labelE1=Label(frame_E2,font=('Verdana',20),textvariable = displaychar1,)
     labelE1.grid()
-    drop2=ttk.Combobox(frame_E3,state="readonly",textvariable=clicked1,width=40)
+    drop2=ttk.Combobox(frame_E3,state="readonly",textvariable=clicked1,width=37)
     drop2['values']=option 
     drop2.grid()
     drop2.bind("<FocusIn>", defocus)
@@ -161,6 +169,9 @@ def exchange():
     button_1.grid()
     button_3=Button(frame_E5,text="clear",relief='raised',command=Eclear)
     button_3.grid()
+
+
+    
 def basic():
     calf.tkraise()
     calf.focus_set()
@@ -182,6 +193,8 @@ def about_me():
     submenu1.add_command(label="Currency",command=exchange)
     submenu1.add_separator()
     submenu1.add_command(label="Quit",command=destroy)
+    label_t=Label(aalf,background=DBR,text="About",font = ('verdana',10,'bold'))
+    label_t.grid(row=0,column=1)
     label_about=Label(aalf, text = st, font =('Verdana', 13))
     label_about.grid()
     pt = PhotoImage(file = "A.png")
