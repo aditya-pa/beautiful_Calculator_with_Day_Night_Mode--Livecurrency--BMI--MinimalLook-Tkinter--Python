@@ -19,12 +19,28 @@ HBR="#849ae3"
 HFR="#ffffff"
 sub="#ffffff"
 B=0
+TBR="#d3d3d3"
+TFR="#000000"
+TDBR="#FFFFFF"
+TDFR="#000000"
+THBR="#849ae3"
+THFR="#ffffff"
+Tsub="#ffffff"
+
 flag=False
 f=True
 
 def bmi():
     ans=""
     ans1=""
+    def enterb_1(event):
+        button_1.config(
+        background = THBR,
+        fg = THFR)
+    def leaveb_1(event):
+        button_1.config(
+        background = TBR,
+        fg = TFR)
     def solve():
         w=int(weight.get())
         h=int(height.get())
@@ -51,7 +67,7 @@ def bmi():
     foreground=FR, activebackground=HBR,activeforeground=HFR)
     mainmenu1.config(menu=submenu1,)
     submenu1.add_command(label="Basic",command=basic)
-    submenu1.add_command(label="Lenght",command=lenchange)
+    submenu1.add_command(label="Length",command=lenchange)
     submenu1.add_command(label="Currency",command=exchange)
     submenu1.add_command(label="About",command=about_me)
     submenu1.add_separator() 
@@ -68,8 +84,10 @@ def bmi():
     label_b2.grid(row=4,column=0)
     Entry_L1=Entry(balf,textvariable=weight,font=('Verdana',25),width=6,bg='powderblue')
     Entry_L1.grid(row=5,column=0)
-    button_1=Button(balf,text="Convert",command=solve,font=('verdana',15),width=15)
+    button_1=Button(balf,text="Convert",command=solve,font=('verdana',15),width=15,background = TBR,fg = TFR,border=B)
     button_1.grid(row=6,column=0)
+    button_1.bind('<Enter>',enterb_1)
+    button_1.bind('<Leave>',leaveb_1) 
     label_b3=Label(balf,font=('Verdana',9),text=ans,width=30)
     label_b3.grid(row=7,column=0)
     label_b4=Label(balf,font=('Verdana',9),text=ans1,width=30)
@@ -87,7 +105,22 @@ def lenchange():
     frame_E4.grid(row=4,column=0)
     frame_E5=Frame(lalf)
     frame_E5.grid(row=5,column=0)
-    
+    def enterb_1(event):
+        button_1.config(
+        background = THBR,
+        fg = THFR)
+    def leaveb_1(event):
+        button_1.config(
+        background = TBR,
+        fg = TFR)
+    def enterb_3(event):
+        button_3.config(
+        background = THBR,
+        fg = THFR)
+    def leaveb_3(event):
+        button_3.config(
+        background = TBR,
+        fg = TFR)
     def click(event):
         global v
         if v=='0':
@@ -161,7 +194,6 @@ def lenchange():
     submenu1 = Menu(mainmenu1,tearoff = 0,background=DBR,
     foreground=FR, activebackground=HBR,activeforeground=HFR)
     mainmenu1.config(menu=submenu1,)
-    submenu1.add_command(label="DAY/NIGHT",command=change)
     submenu1.add_command(label="Basic",command=basic)
     submenu1.add_command(label="Currency",command=exchange)
     submenu1.add_command(label="BMI",command=bmi)
@@ -189,10 +221,14 @@ def lenchange():
     drop2.bind("<FocusIn>", defocus)
     labelE2=Label(frame_E4,font=('Verdana',20),textvariable = displaychar,width=10)
     labelE2.grid()
-    button_1=Button(frame_E5,text="Convert",command=solve,width=10,font=('verdana',20))
+    button_1=Button(frame_E5,text="Convert",command=solve,width=10,font=('verdana',20),background = TBR,fg = TFR,border=B)
     button_1.grid()
-    button_3=Button(frame_E5,text="clear",relief='raised',command=Eclear,width=10,font=('verdana',20))
+    button_3=Button(frame_E5,text="clear",relief='raised',command=Eclear,width=10,font=('verdana',20),background = TBR,fg = TFR,border=B)
     button_3.grid()
+    button_3.bind('<Enter>',enterb_3)
+    button_3.bind('<Leave>',leaveb_3)
+    button_1.bind('<Enter>',enterb_1)
+    button_1.bind('<Leave>',leaveb_1) 
 def exchange():
     frame_E0=Frame(Ealf)
     frame_E0.grid(row=0,column=0)
@@ -206,7 +242,22 @@ def exchange():
     frame_E4.grid(row=4,column=0)
     frame_E5=Frame(Ealf)
     frame_E5.grid(row=5,column=0)
-    
+    def enterb_1(event):
+        button_1.config(
+        background = THBR,
+        fg = THFR)
+    def leaveb_1(event):
+        button_1.config(
+        background = TBR,
+        fg = TFR)
+    def enterb_3(event):
+        button_3.config(
+        background = THBR,
+        fg = THFR)
+    def leaveb_3(event):
+        button_3.config(
+        background = TBR,
+        fg = TFR)
     def click(event):
         global v
         if v=='0':
@@ -315,7 +366,7 @@ def exchange():
     mainmenu1.config(menu=submenu1,)
 
     submenu1.add_command(label="Basic",command=basic)
-    submenu1.add_command(label="Lenght",command=lenchange)
+    submenu1.add_command(label="Length",command=lenchange)
     submenu1.add_command(label="BMI",command=bmi)
     submenu1.add_command(label="About",command=about_me)
     submenu1.add_separator()
@@ -341,14 +392,50 @@ def exchange():
     drop2.bind("<FocusIn>", defocus)
     labelE2=Label(frame_E4,font=('Verdana',20),textvariable = displaychar,width=10)
     labelE2.grid()
-    button_1=Button(frame_E5,text="Convert",command=solve1,width=10,font=('verdana',20))
+    button_1=Button(frame_E5,text="Convert",command=solve1,width=10,font=('verdana',20),background = TBR,fg = TFR,border=B)
     button_1.grid()
-    button_3=Button(frame_E5,text="clear",relief='raised',command=Eclear1,width=10,font=('verdana',20))
+    button_3=Button(frame_E5,text="clear",relief='raised',command=Eclear1,width=10,font=('verdana',20),background = TBR,fg = TFR,border=B)
     button_3.grid()
+    button_3.bind('<Enter>',enterb_3)
+    button_3.bind('<Leave>',leaveb_3)
+    button_1.bind('<Enter>',enterb_1)
+    button_1.bind('<Leave>',leaveb_1)
 def basic():
     calf.tkraise()
     calf.focus_set()
 def about_me(): 
+    def enterb_1(event):
+        b_1.config(
+        background = THBR,
+        fg = THFR)
+    def leaveb_1(event):
+        b_1.config(
+        background = TBR,
+        fg = TFR)
+    def enterb_2(event):
+        b_2.config(
+        background = THBR,
+        fg = THFR)
+    def leaveb_2(event):
+        b_2.config(
+        background = TBR,
+        fg = TFR)
+    def enterb_3(event):
+        b_3.config(
+        background = THBR,
+        fg = THFR)
+    def leaveb_3(event):
+        b_3.config(
+        background = TBR,
+        fg = TFR)
+    def enterb_4(event):
+        b_4.config(
+        background = THBR,
+        fg = THFR)
+    def leaveb_4(event):
+        b_4.config(
+        background = TBR,
+        fg = TFR)
     st='''Developed by 
 Aditya Pandey'''
     aalf.tkraise()
@@ -383,14 +470,22 @@ Aditya Pandey'''
     pe3 = pt3.subsample(4,4)
     pt4 = PhotoImage(file = "m.png")
     pe4 = pt4.subsample(15,15)
-    b_1=Button(Frame_A2, image = pe1,width=100, relief='groove',command=openlinkedin)
+    b_1=Button(Frame_A2, image = pe1,width=100, relief='groove',command=openlinkedin,background = TBR,fg = TFR,border=B)
     b_1.grid(row=1,column=0)
-    b_2=Button(Frame_A2, image = pe2,width=100, relief='groove',compound = LEFT,command=twitter)
+    b_1.bind('<Enter>',enterb_1)
+    b_1.bind('<Leave>',leaveb_1)
+    b_2=Button(Frame_A2, image = pe2,width=100, relief='groove',compound = LEFT,command=twitter,background = TBR,fg = TFR,border=B)
     b_2.grid(row=2,column=0)
-    b_3=Button(Frame_A2, image = pe3, width=100,  relief='groove',compound = LEFT,command=github,)
+    b_2.bind('<Enter>',enterb_2)
+    b_2.bind('<Leave>',leaveb_2)
+    b_3=Button(Frame_A2, image = pe3, width=100,  relief='groove',compound = LEFT,command=github,background = TBR,fg = TFR,border=B)
     b_3.grid(row=3,column=0)
-    b_4=Button(Frame_A2, width=100,image = pe4,relief='groove',compound = LEFT,command=email,)
+    b_3.bind('<Enter>',enterb_3)
+    b_3.bind('<Leave>',leaveb_3)
+    b_4=Button(Frame_A2, width=100,image = pe4,relief='groove',compound = LEFT,command=email,background = TBR,fg = TFR,border=B)
     b_4.grid(row=4,column=0)
+    b_4.bind('<Enter>',enterb_4)
+    b_4.bind('<Leave>',leaveb_4)
     mainloop()
 def openlinkedin():
     webbrowser.open('https://www.linkedin.com/in/aditya-pa/')
