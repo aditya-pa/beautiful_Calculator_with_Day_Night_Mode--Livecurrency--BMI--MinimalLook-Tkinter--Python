@@ -161,7 +161,7 @@ def lenchange():
     submenu1 = Menu(mainmenu1,tearoff = 0,background=DBR,
     foreground=FR, activebackground=HBR,activeforeground=HFR)
     mainmenu1.config(menu=submenu1,)
-
+    submenu1.add_command(label="DAY/NIGHT",command=change)
     submenu1.add_command(label="Basic",command=basic)
     submenu1.add_command(label="Currency",command=exchange)
     submenu1.add_command(label="BMI",command=bmi)
@@ -1112,7 +1112,7 @@ def clicked_history(event):
     var=hist
     hist=""
     label.config(text=hist)
-root.geometry("246x468")
+root.geometry("246x456")
 root.resizable(1,1)
 root.title("Calculator")
 icon=PhotoImage(file = "calculator.png")
@@ -1185,11 +1185,11 @@ frame_6=Frame(calf)
 frame_6.pack(expand = True,fill = 'both')
 frame_7=Frame(calf)
 frame_7.pack(expand = True,fill = 'both')
-label_t=Label(frame_t,background=DBR,text="BASIC",font = ('verdana',6,),width=20)
+label_t=Label(frame_t,background=DBR,text="BASIC",font = ('verdana',10,'bold'))
 label_t.grid(row=0,column=1)
 label_2=Label(frame_1,background=DBR)
 label_2.pack(expand = True,fill = 'both')
-label=Label(frame_x,background=DBR,text = hist,font = ('verdana',20),anchor = 'se')
+label=Label(frame_x,background=DBR,text = hist,font = ('verdana',13),anchor = 'se',width=20)
 label.bind('<Button-1>',clicked_history)
 label.pack(expand = True,fill = 'both')
 entry_1=Label(frame_1,
