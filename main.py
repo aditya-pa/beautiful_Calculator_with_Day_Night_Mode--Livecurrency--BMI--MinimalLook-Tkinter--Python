@@ -31,6 +31,11 @@ flag=False
 f=True
 
 def bmi():
+    Frame_B1=Frame(balf,bg=TDBR)
+    Frame_B1.grid(row=0,column=0)
+    Frame_B2=Frame(balf,bg=TDBR)
+    Frame_B2.grid(row=1,column=0)
+    root.geometry("246x250")
     ans=""
     ans1=""
     def enterb_1(event):
@@ -61,38 +66,41 @@ def bmi():
         label_b3.config(text=ans)
         label_b4.config(text=ans1)
 
-    mainmenu1 = Menubutton(balf, image=image ,background=DBR,activebackground=HBR)
-    mainmenu1.grid(row=0,column=0,sticky=W+N)
-    submenu1 = Menu(mainmenu1,tearoff = 0,background=DBR,
-    foreground=FR, activebackground=HBR,activeforeground=HFR)
-    mainmenu1.config(menu=submenu1,)
-    submenu1.add_command(label="Basic",command=basic)
-    submenu1.add_command(label="Length",command=lenchange)
-    submenu1.add_command(label="Currency",command=exchange)
-    submenu1.add_command(label="About",command=about_me)
-    submenu1.add_separator() 
-    submenu1.add_command(label="Quit",command=destroy)
+    mainmenu = Menubutton(balf, image=image ,background=TDBR,activebackground=THBR)
+    mainmenu.grid(row=0,column=0,sticky=W+N)
+    submenu = Menu(mainmenu,tearoff = 0,background=TDBR,
+    foreground=TFR, activebackground=THBR,activeforeground=HFR)
+    mainmenu.config(menu=submenu,)
+    submenu.add_command(label="Basic",command=basic)
+    submenu.add_command(label="Length",command=lenchange)
+    submenu.add_command(label="Currency",command=exchange)
+    submenu.add_command(label="About",command=about_me)
+    submenu.add_separator() 
+    submenu.add_command(label="Quit",command=destroy)
     height=StringVar()
     weight=StringVar()
     balf.tkraise()
     balf.focus_set()
-    label_b1=Label(balf,font=('Verdana',19),text = "Enter Your Height",width=15)
+    label_t=Label(Frame_B1,background=TDBR,text="About",font = ('verdana',10,'bold'))
+    label_t.grid(row=0,column=0,sticky=W+N)
+    label_b1=Label(Frame_B2,font=('Verdana',19),text = "Enter Your Height",width=15)
     label_b1.grid(row=1,column=0)
-    Entry_L1=Entry(balf,textvariable=height,font=('Verdana',25),width=6,bg='powderblue')
+    Entry_L1=Entry(Frame_B2,textvariable=height,font=('Verdana',19),width=15,bg='powderblue',border=0)
     Entry_L1.grid(row=3,column=0)
-    label_b2=Label(balf,font=('Verdana',19),text = "Enter Your Weight",width=15)
+    label_b2=Label(Frame_B2,font=('Verdana',19),text = "Enter Your Weight",width=15)
     label_b2.grid(row=4,column=0)
-    Entry_L1=Entry(balf,textvariable=weight,font=('Verdana',25),width=6,bg='powderblue')
+    Entry_L1=Entry(Frame_B2,textvariable=weight,font=('Verdana',19),width=15,bg='powderblue',border=0)
     Entry_L1.grid(row=5,column=0)
-    button_1=Button(balf,text="Convert",command=solve,font=('verdana',15),width=15,background = TBR,fg = TFR,border=B)
+    button_1=Button(Frame_B2,text="Convert",command=solve,font=('verdana',16),width=18,background = TBR,fg = TFR,border=B)
     button_1.grid(row=6,column=0)
     button_1.bind('<Enter>',enterb_1)
     button_1.bind('<Leave>',leaveb_1) 
-    label_b3=Label(balf,font=('Verdana',9),text=ans,width=30)
+    label_b3=Label(Frame_B2,font=('Verdana',9),text=ans,width=30)
     label_b3.grid(row=7,column=0)
-    label_b4=Label(balf,font=('Verdana',9),text=ans1,width=30)
+    label_b4=Label(Frame_B2,font=('Verdana',9),text=ans1,width=30)
     label_b4.grid(row=8,column=0)
 def lenchange():
+    root.geometry("246x248")
     frame_E0=Frame(lalf)
     frame_E0.grid(row=0,column=0)
     frame_E1=Frame(lalf)
@@ -107,7 +115,7 @@ def lenchange():
     frame_E5.grid(row=5,column=0)
     def enterb_1(event):
         button_1.config(
-        background = THBR,
+        background = THBR,    
         fg = THFR)
     def leaveb_1(event):
         button_1.config(
@@ -189,19 +197,21 @@ def lenchange():
     lalf.bind('<Delete>',Eclear1)
     lalf.bind('<BackSpace>',Ebackspace) 
     final_data={"millimeter":1,"centimeter":10,"meter":1000,"kilometer":1000000,"inch":25.4,"foot":304.8,"yard":914.4,"mile":1609344,"nautical mile":1852000}
-    mainmenu1 = Menubutton(lalf, image=image ,background=DBR,activebackground=HBR)
-    mainmenu1.grid(row=0,column=0,sticky=W+N)
-    submenu1 = Menu(mainmenu1,tearoff = 0,background=DBR,
-    foreground=FR, activebackground=HBR,activeforeground=HFR)
-    mainmenu1.config(menu=submenu1,)
-    submenu1.add_command(label="Basic",command=basic)
-    submenu1.add_command(label="Currency",command=exchange)
-    submenu1.add_command(label="BMI",command=bmi)
-    submenu1.add_command(label="About",command=about_me)
-    submenu1.add_separator()
-    submenu1.add_command(label="Quit",command=destroy)
+    mainmenu = Menubutton(lalf, image=image ,background=TDBR,activebackground=THBR)
+    mainmenu.grid(row=0,column=0,sticky=W+N)
+    submenu = Menu(mainmenu,tearoff = 0,background=TDBR,
+    foreground=TFR, activebackground=THBR,activeforeground=HFR)
+    mainmenu.config(menu=submenu,)
+    submenu.add_command(label="Basic",command=basic)
+    submenu.add_command(label="Currency",command=exchange)
+    submenu.add_command(label="BMI",command=bmi)
+    submenu.add_command(label="About",command=about_me)
+    submenu.add_separator()
+    submenu.add_command(label="Quit",command=destroy)
     option=["millimeter","centimeter","meter","kilometer","inch","foot",
     "yard","mile","nautical mile"]
+    label_t=Label(frame_E0,background=TDBR,text="Length",font = ('verdana',10,'bold'))
+    label_t.grid(row=0,column=1,sticky=W+N)
     clicked=StringVar()
     clicked.set(option[0])
     clicked1=StringVar()
@@ -213,23 +223,24 @@ def lenchange():
     drop['values']=option
     drop.grid()
     drop.bind("<FocusIn>", defocus)
-    labelE1=Label(frame_E2,font=('Verdana',20),textvariable = displaychar1,width=10)
+    labelE1=Label(frame_E2,font=('Verdana',20),textvariable = displaychar1,width=14)
     labelE1.grid()
     drop2=ttk.Combobox(frame_E3,state="readonly",textvariable=clicked1,width=37)
     drop2['values']=option 
     drop2.grid()
     drop2.bind("<FocusIn>", defocus)
-    labelE2=Label(frame_E4,font=('Verdana',20),textvariable = displaychar,width=10)
+    labelE2=Label(frame_E4,font=('Verdana',20),textvariable = displaychar,width=14)
     labelE2.grid()
-    button_1=Button(frame_E5,text="Convert",command=solve,width=10,font=('verdana',20),background = TBR,fg = TFR,border=B)
+    button_1=Button(frame_E5,text="Convert",command=solve,width=15,font=('verdana',19),background = TBR,fg = TFR,border=B)
     button_1.grid()
-    button_3=Button(frame_E5,text="clear",relief='raised',command=Eclear,width=10,font=('verdana',20),background = TBR,fg = TFR,border=B)
+    button_3=Button(frame_E5,text="clear",relief='raised',command=Eclear,width=15,font=('verdana',19),background = TBR,fg = TFR,border=B)
     button_3.grid()
     button_3.bind('<Enter>',enterb_3)
     button_3.bind('<Leave>',leaveb_3)
     button_1.bind('<Enter>',enterb_1)
     button_1.bind('<Leave>',leaveb_1) 
 def exchange():
+    root.geometry("246x250")
     frame_E0=Frame(Ealf)
     frame_E0.grid(row=0,column=0)
     frame_E1=Frame(Ealf)
@@ -359,18 +370,18 @@ def exchange():
     except:
         final_data=getting_data()
 
-    mainmenu1 = Menubutton(Ealf, image=image ,background=DBR,activebackground=HBR)
-    mainmenu1.grid(row=0,column=0,sticky=W+N)
-    submenu1 = Menu(mainmenu1,tearoff = 0,background=DBR,
-    foreground=FR, activebackground=HBR,activeforeground=HFR)
-    mainmenu1.config(menu=submenu1,)
+    mainmenu = Menubutton(Ealf, image=image ,background=TDBR,activebackground=THBR)
+    mainmenu.grid(row=0,column=0,sticky=W+N)
+    submenu = Menu(mainmenu,tearoff = 0,background=TDBR,
+    foreground=TFR, activebackground=THBR,activeforeground=HFR)
+    mainmenu.config(menu=submenu,)
 
-    submenu1.add_command(label="Basic",command=basic)
-    submenu1.add_command(label="Length",command=lenchange)
-    submenu1.add_command(label="BMI",command=bmi)
-    submenu1.add_command(label="About",command=about_me)
-    submenu1.add_separator()
-    submenu1.add_command(label="Quit",command=destroy)
+    submenu.add_command(label="Basic",command=basic)
+    submenu.add_command(label="Length",command=lenchange)
+    submenu.add_command(label="BMI",command=bmi)
+    submenu.add_command(label="About",command=about_me)
+    submenu.add_separator()
+    submenu.add_command(label="Quit",command=destroy)
     option=["Rupee","US Dollar","Euro","British Pound","Australian Dollar","Canadian Dollar",
     "Singapore Dollar","Swiss Franc","Malaysian Ringgit","Japanese Yen","Chinese Yuan Renminbi"]
     clicked=StringVar()
@@ -379,31 +390,35 @@ def exchange():
     clicked1.set(option[0])
     displaychar=StringVar()
     displaychar1=StringVar()
-    displaychar1.set(v)    
+    displaychar1.set(v)  
+    label_t=Label(frame_E0,background=TDBR,text="Currency",font = ('verdana',10,'bold'))
+    label_t.grid(row=0,column=1,sticky=W+N)  
     drop=ttk.Combobox(frame_E1,state="readonly",textvariable=clicked,width=37)
     drop['values']=option
     drop.grid()
     drop.bind("<FocusIn>", defocus)
-    labelE1=Label(frame_E2,font=('Verdana',20),textvariable = displaychar1,width=10)
+    labelE1=Label(frame_E2,font=('Verdana',20),textvariable = displaychar1,width=14)
     labelE1.grid()
     drop2=ttk.Combobox(frame_E3,state="readonly",textvariable=clicked1,width=37) 
     drop2['values']=option 
     drop2.grid()
     drop2.bind("<FocusIn>", defocus)
-    labelE2=Label(frame_E4,font=('Verdana',20),textvariable = displaychar,width=10)
+    labelE2=Label(frame_E4,font=('Verdana',20),textvariable = displaychar,width=14)
     labelE2.grid()
-    button_1=Button(frame_E5,text="Convert",command=solve1,width=10,font=('verdana',20),background = TBR,fg = TFR,border=B)
+    button_1=Button(frame_E5,text="Convert",command=solve1,width=14,font=('verdana',20),background = TBR,fg = TFR,border=B)
     button_1.grid()
-    button_3=Button(frame_E5,text="clear",relief='raised',command=Eclear1,width=10,font=('verdana',20),background = TBR,fg = TFR,border=B)
+    button_3=Button(frame_E5,text="clear",relief='raised',command=Eclear1,width=14,font=('verdana',20),background = TBR,fg = TFR,border=B)
     button_3.grid()
     button_3.bind('<Enter>',enterb_3)
     button_3.bind('<Leave>',leaveb_3)
     button_1.bind('<Enter>',enterb_1)
     button_1.bind('<Leave>',leaveb_1)
 def basic():
+    root.geometry("246x456")
     calf.tkraise()
     calf.focus_set()
 def about_me(): 
+    root.geometry("246x258")
     def enterb_1(event):
         b_1.config(
         background = THBR,
@@ -440,27 +455,27 @@ def about_me():
 Aditya Pandey'''
     aalf.tkraise()
     aalf.focus_set()
-    Frame_A1=Frame(aalf,bg=DBR)
+    Frame_A1=Frame(aalf,bg=TDBR)
     Frame_A1.grid(row=0,column=0)
-    Frame_A2=Frame(aalf,bg=DBR)
+    Frame_A2=Frame(aalf,bg=TDBR)
     Frame_A2.grid(row=1,column=0)
     imgvar1 = PhotoImage(file='menu.png')
     image = imgvar1.subsample(15,20)
-    mainmenu1 = Menubutton(aalf, image=image ,background=DBR,activebackground=HBR)
-    mainmenu1.grid(row=0,column=0,sticky=W+N)
-    submenu1 = Menu(mainmenu1,tearoff = 0,background=DBR,
-    foreground=FR, activebackground=HBR,activeforeground=HFR)
-    mainmenu1.config(menu=submenu1,)
+    mainmenu = Menubutton(aalf, image=image ,background=TDBR,activebackground=THBR)
+    mainmenu.grid(row=0,column=0,sticky=W+N)
+    submenu = Menu(mainmenu,tearoff = 0,background=TDBR,
+    foreground=TFR, activebackground=THBR,activeforeground=HFR)
+    mainmenu.config(menu=submenu,)
 
-    submenu1.add_command(label="basic",command=basic)
-    submenu1.add_command(label="Currency",command=exchange)
-    submenu1.add_command(label="BMI",command=bmi)
-    submenu1.add_command(label="Length",command=lenchange)
-    submenu1.add_separator()
-    submenu1.add_command(label="Quit",command=destroy)
-    label_t=Label(Frame_A1,background=DBR,text="About",font = ('verdana',10,'bold'))
+    submenu.add_command(label="basic",command=basic)
+    submenu.add_command(label="Currency",command=exchange)
+    submenu.add_command(label="BMI",command=bmi)
+    submenu.add_command(label="Length",command=lenchange)
+    submenu.add_separator()
+    submenu.add_command(label="Quit",command=destroy)
+    label_t=Label(Frame_A1,background=TDBR,text="About",font = ('verdana',10,'bold'))
     label_t.grid(row=0,column=1,sticky=W+N)
-    label_about=Label(Frame_A2, text = st,background=DBR, font =('Verdana', 25))
+    label_about=Label(Frame_A2, text = st,background="#959c9a", font =('Verdana', 25))
     label_about.grid(row=0,column=0)
     pt1 = PhotoImage(file = "l.png")
     pe1 = pt1.subsample(2,2)
@@ -470,19 +485,19 @@ Aditya Pandey'''
     pe3 = pt3.subsample(4,4)
     pt4 = PhotoImage(file = "m.png")
     pe4 = pt4.subsample(15,15)
-    b_1=Button(Frame_A2, image = pe1,width=100, relief='groove',command=openlinkedin,background = TBR,fg = TFR,border=B)
+    b_1=Button(Frame_A2, image = pe1,width=244, relief='groove',command=openlinkedin,background = TBR,fg = TFR,border=B)
     b_1.grid(row=1,column=0)
     b_1.bind('<Enter>',enterb_1)
     b_1.bind('<Leave>',leaveb_1)
-    b_2=Button(Frame_A2, image = pe2,width=100, relief='groove',compound = LEFT,command=twitter,background = TBR,fg = TFR,border=B)
+    b_2=Button(Frame_A2, image = pe2,width=244, relief='groove',compound = LEFT,command=twitter,background = TBR,fg = TFR,border=B)
     b_2.grid(row=2,column=0)
     b_2.bind('<Enter>',enterb_2)
     b_2.bind('<Leave>',leaveb_2)
-    b_3=Button(Frame_A2, image = pe3, width=100,  relief='groove',compound = LEFT,command=github,background = TBR,fg = TFR,border=B)
+    b_3=Button(Frame_A2, image = pe3, width=244,relief='groove',compound = LEFT,command=github,background = TBR,fg = TFR,border=B)
     b_3.grid(row=3,column=0)
     b_3.bind('<Enter>',enterb_3)
     b_3.bind('<Leave>',leaveb_3)
-    b_4=Button(Frame_A2, width=100,image = pe4,relief='groove',compound = LEFT,command=email,background = TBR,fg = TFR,border=B)
+    b_4=Button(Frame_A2, image = pe4,width=244, relief='groove',compound = LEFT,command=email,background = TBR,fg = TFR,border=B)
     b_4.grid(row=4,column=0)
     b_4.bind('<Enter>',enterb_4)
     b_4.bind('<Leave>',leaveb_4)
@@ -522,13 +537,6 @@ def change():
         invert_colours()
         flag=True
 def invert_colours():
-    (
-        aalf.config(bg=DBR)
-    
-    )
-    (
-        lalf.config(bg=DBR)
-    )
     root.config(bg=DBR)
     frame_t.config(bg=DBR)
     mainmenu1.config(background=DBR,activebackground=HBR) 
@@ -1207,7 +1215,7 @@ def clicked_history(event):
     var=hist
     hist=""
     label.config(text=hist)
-root.geometry("246x456")
+root.geometry("246x456+300+200")
 root.resizable(1,1)
 root.title("Calculator")
 icon=PhotoImage(file = "calculator.png")
