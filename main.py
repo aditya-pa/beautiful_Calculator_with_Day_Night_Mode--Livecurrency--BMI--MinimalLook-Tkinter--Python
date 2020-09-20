@@ -81,7 +81,7 @@ def bmi():
     weight=StringVar()
     balf.tkraise()
     balf.focus_set()
-    label_t=Label(Frame_B1,background=TDBR,text="About",font = ('verdana',10,'bold'))
+    label_t=Label(Frame_B1,background=TDBR,text="BMI",font = ('verdana',10,'bold'))
     label_t.grid(row=0,column=0,sticky=W+N)
     label_b1=Label(Frame_B2,font=('Verdana',19),text = "Enter Your Height",width=15)
     label_b1.grid(row=1,column=0)
