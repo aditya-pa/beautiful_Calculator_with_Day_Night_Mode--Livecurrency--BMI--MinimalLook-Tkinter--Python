@@ -47,8 +47,8 @@ def bmi():
         background = TBR,
         fg = TFR)
     def solve():
-        w=int(weight.get())
-        h=int(height.get())
+        w=float(weight.get())
+        h=float(height.get())
         h=h/100
         b=round(w/(h*h))
         if b<19:
@@ -147,14 +147,14 @@ def lenchange():
     def solve():
         s=clicked.get()
         d=clicked1.get()
-        m=int(v)
+        m=float(v)
         if s==d:
             displaychar.set(str(m))
         elif s=='millimeter':
             displaychar.set(round(convert(d,m),2))
         elif d=='millimeter':
             displaychar.set(round(convert2(s,m)))
-        else:
+        else:   
             displaychar.set(round(convert(d,(convert2(s,m))),2))
     def Eclear1(event):
         Eclear()
@@ -305,7 +305,7 @@ def exchange():
     def solve1():
         s=clicked.get()
         d=clicked1.get()
-        m=int(v)
+        m=(v)
         if s==d:
             displaychar.set(str(m))
         elif s=='Rupee':
